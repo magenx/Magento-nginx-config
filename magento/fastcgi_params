@@ -1,0 +1,3 @@
+fastcgi_connect_timeout 65;
+fastcgi_send_timeout 600;
+fastcgi_read_timeout 600;
