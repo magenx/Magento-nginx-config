@@ -21,6 +21,8 @@ fastcgi_param  SERVER_NAME        $server_name;
 
 # PHP only, required if PHP was built with --enable-force-cgi-redirect
 fastcgi_param  REDIRECT_STATUS    200;
+
+# magento
 fastcgi_connect_timeout 65;
 fastcgi_send_timeout 7200;
 fastcgi_read_timeout 7200;
