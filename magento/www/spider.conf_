@@ -49,6 +49,7 @@ if ($http_user_agent ~* "aiHitBot"){ return 444; }
         if ($http_user_agent ~* "linkwalker"){ return 444; }
         if ($http_user_agent ~* "lwp-trivial"){ return 444; }
         if ($http_user_agent ~* "^Maxthon$"){ return 444; }
+		if ($http_user_agent ~* "Mail.RU_Bot"){ return 444; }
         if ($http_user_agent ~* "MFC_Tear_Sample"){ return 444; }
         if ($http_user_agent ~* "^microsoft.url"){ return 444; }
         if ($http_user_agent ~ "Microsoft"){ return 444; }
