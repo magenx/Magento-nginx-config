@@ -14,7 +14,7 @@ if [ -n ${DIF} ]; then
 else
         mv -f /tmp/backend_new.conf /tmp/backend.conf
         # Remove old upstreams
-        sed -i '/{/,/}/ {/{/n;/}/!d}' /etc/nginx/backend.conf
+        sed -i '/{/,/keepalive/ {/{/n;/keepalive/!d}' /etc/nginx/backend.conf
         # Inject new upstreams
         for IP in $(cat /tmp/backend.conf)
         do
