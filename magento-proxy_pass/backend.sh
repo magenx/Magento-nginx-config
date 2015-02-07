@@ -6,21 +6,21 @@ TAG="web-node*"
 STATE="running"
 FILTER=""Name=tag-value,Values=${TAG}" "Name=instance-state-name,Values=${STATE}""
 BACKEND=$(aws ec2 describe-instances --filter ${FILTER} | awk '/PRIVATEIPADDRESS/{print $4}')
-${BACKEND} > /tmp/backend_new.conf
+echo ${BACKEND} > /tmp/backend_new.conf
 [ -f "/tmp/backend.conf" ] || touch /tmp/backend.conf
-DIF=$(diff /tmp/backend.conf /tmp/backend_new.conf)
-if [ -n ${DIF} ]; then
-        echo "no changes"
-else
+DIFF=$(diff /tmp/backend.conf /tmp/backend_new.conf)
+if [ "${DIFF}" != "" ]
+then
         mv -f /tmp/backend_new.conf /tmp/backend.conf
         # Remove old upstreams
-        sed -i '/{/,/keepalive/ {/{/n;/keepalive/!d}' /etc/nginx/upstream/backend.conf
+        sed -i '/{/,/keepalive/ {/{/n;/keepalive/!d}' /etc/nginx/backend.conf
         # Inject new upstreams
         for IP in $(cat /tmp/backend.conf)
         do
                 sed -i "/upstream backend/ a\
-                        server ${IP};" /etc/nginx/upstream/backend.conf
+                        server ${IP};" /etc/nginx/backend.conf
         done
         # Load new upstreams
         service nginx reload
+        echo "New IP loaded into backend - ${BACKEND}" | mail -s "Load Balancer reloaded" admin@magento.com
 fi
