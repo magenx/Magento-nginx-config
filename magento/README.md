@@ -1,6 +1,6 @@
 HHVM configuration enabled.<br/>
 CentOS 7 <br/>
-https://yum.gleez.com/7/x86_64/hhvm-3.8.1-1.el7.centos.x86_64.rpm <br/>
+https://yum.gleez.com/7/x86_64/hhvm-3.9.1-1.el7.centos.x86_64.rpm <br/>
 
 /etc/hhvm/server.ini 
 ```
