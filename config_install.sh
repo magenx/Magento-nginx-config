@@ -1,6 +1,6 @@
 #!/bin/bash
 #### Install nginx configuration
-#### IT WILL REMOVE ALL CONFIGURATION FILES.
+#### IT WILL REMOVE ALL CONFIGURATION FILES THAT HAVE BEEN PREVIOUSLY INSTALLED.
 
 NGINX_EXTRA_CONF="error_page.conf extra_protect.conf export.conf hhvm.conf headers.conf maintenance.conf multishop.conf pagespeed.conf spider.conf"
 NGINX_EXTRA_CONF_URL="https://raw.githubusercontent.com/magenx/nginx-config/master/magento/conf.d/"
