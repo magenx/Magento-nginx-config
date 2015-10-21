@@ -27,7 +27,7 @@ sed -i "s,root /var/www/html,root ${MY_SHOP_PATH},g" /etc/nginx/sites-available/
 ln -s /etc/nginx/sites-available/magento.conf /etc/nginx/sites-enabled/magento.conf
 ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
-cd /etc/nginx/conf.d/ && rm -rf *
+cd /etc/nginx/conf.d/
 for CONFIG in ${NGINX_EXTRA_CONF}
 do
 wget -q ${NGINX_EXTRA_CONF_URL}${CONFIG}
