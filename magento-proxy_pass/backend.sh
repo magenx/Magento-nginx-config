@@ -21,6 +21,6 @@ then
                         server ${IP};" /etc/nginx/backend.conf
         done
         # Load new upstreams
-        service nginx reload
-        echo "New IP loaded into backend - ${BACKEND}" | mail -s "Load Balancer reloaded" admin@magento.com
+        service nginx restart
+        echo "IP loaded into backend - ${BACKEND}" | mail -s "Load Balancer reloaded" admin@magento.com
 fi
