@@ -5,6 +5,7 @@ to enable configuration you have to run these commands:<br/>
 ```ln -s /etc/nginx/sites-avalable/default.conf ./default.conf```<br/>
 ```ln -s /etc/nginx/sites-avalable/magento2.conf ./magento2.conf```<br/>
 ```nginx -t```<br/>
+if no errors detected, then<br/>
 ```service nginx restart```
 
 <br/>
