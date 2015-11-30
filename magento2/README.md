@@ -1,6 +1,11 @@
 TESTING<br/>
 
+to enable configuration you have to run these commands:<br/>
+```cd /etc/nginx/sites-enabled/```<br/>
+```ln -s /etc/nginx/sites-avalable/default.conf ./default.conf```<br/>
+```ln -s /etc/nginx/sites-avalable/magento2.conf ./magento2.conf```<br/>
 
+<br/>
 for ssl configuration in nginx.conf you must: <br/>
 1 - open ```cd /etc/ssl/certs``` <br/>
 2 - generate dhparam file ```openssl dhparam -out dhparams.pem 2048``` <br/>
