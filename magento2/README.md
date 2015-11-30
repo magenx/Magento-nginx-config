@@ -13,7 +13,7 @@ for ssl configuration in nginx.conf you must: <br/>
 ```conf.d/maintenance.conf``` => global maintenance<br/>
 ```conf.d/multishop.conf``` => settings for multistore code<br/>
 ```conf.d/pagespeed.conf``` => pagespeed module settings<br/>
-```conf.d/php_backend.conf``` => globabl settings for php execution<br/>
+```conf.d/php_backend.conf``` => global settings for php execution<br/>
 ```conf.d/setup.conf``` => magento web setup/update (before web installation create dummy ```admin``` cookie as httponly)<br/>
 ```conf.d/spider.conf``` => bad user agents mapping<br/>
 ```conf.d/status.conf``` => nginx/php-fpm status locations<br/>
