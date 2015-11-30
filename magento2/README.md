@@ -4,6 +4,8 @@ to enable configuration you have to run these commands:<br/>
 ```cd /etc/nginx/sites-enabled/```<br/>
 ```ln -s /etc/nginx/sites-avalable/default.conf ./default.conf```<br/>
 ```ln -s /etc/nginx/sites-avalable/magento2.conf ./magento2.conf```<br/>
+```nginx -t```
+```service nginx restart```
 
 <br/>
 for ssl configuration in nginx.conf you must: <br/>
