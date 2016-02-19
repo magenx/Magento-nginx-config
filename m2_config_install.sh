@@ -23,7 +23,7 @@ wget -q https://raw.githubusercontent.com/magenx/nginx-config/master/magento2/si
 wget -q https://raw.githubusercontent.com/magenx/nginx-config/master/magento2/sites-available/magento2.conf
 
 sed -i "s/example.com/${MY_DOMAIN}/g" /etc/nginx/sites-available/magento2.conf
-sed -i "s,root /var/www/html,root ${MY_SHOP_PATH},g" /etc/nginx/sites-available/magento2.conf
+sed -i "s,/var/www/html,${MY_SHOP_PATH},g" /etc/nginx/sites-available/magento2.conf
 sed -i "s,user  nginx,user  ${MY_WEB_USER},g" /etc/nginx/nginx.conf
 
 ln -s /etc/nginx/sites-available/magento2.conf /etc/nginx/sites-enabled/magento2.conf
