@@ -11,7 +11,6 @@ read -e -p "---> Enter your domain name (without www.): " -i "myshop.com" MY_DOM
 read -e -p "---> Enter your web root path: " -i "/var/www/html/magento" MY_SHOP_PATH
 read -e -p "---> Enter your web user usually www-data (nginx for Centos): " -i "www-data" MY_WEB_USER
 
-#### wget -qO /etc/nginx/port.conf https://raw.githubusercontent.com/magenx/nginx-config/master/magento2/port.conf
 wget -qO /etc/nginx/fastcgi_params https://raw.githubusercontent.com/magenx/nginx-config/master/magento2/fastcgi_params
 wget -qO /etc/nginx/nginx.conf https://raw.githubusercontent.com/magenx/nginx-config/master/magento2/nginx.conf
 
@@ -29,7 +28,7 @@ sed -i "s,user  nginx,user  ${MY_WEB_USER},g" /etc/nginx/nginx.conf
 ln -s /etc/nginx/sites-available/magento2.conf /etc/nginx/sites-enabled/magento2.conf
 ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
-cd /etc/nginx/conf.d/
+mkdir /etc/nginx/conf_m2/ && cd /etc/nginx/conf_m2/
 for CONFIG in ${NGINX_EXTRA_CONF}
 do
 wget -q ${NGINX_EXTRA_CONF_URL}${CONFIG}
