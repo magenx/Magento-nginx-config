@@ -17,8 +17,8 @@ sed -i "s/www/sites-enabled/g" /etc/nginx/nginx.conf
 
 mkdir -p /etc/nginx/sites-enabled
 mkdir -p /etc/nginx/sites-available && cd $_
-wget -q https://raw.githubusercontent.com/magenx/nginx-config/master/magento/www/default.conf
-wget -q https://raw.githubusercontent.com/magenx/nginx-config/master/magento/www/magento.conf
+wget -q https://raw.githubusercontent.com/magenx/nginx-config/master/magento/sites-available/default.conf
+wget -q https://raw.githubusercontent.com/magenx/nginx-config/master/magento/sites-available/magento.conf
 
 sed -i "s/example.com/${MY_DOMAIN}/g" /etc/nginx/sites-available/magento.conf
 sed -i "s,root /var/www/html,root ${MY_SHOP_PATH},g" /etc/nginx/sites-available/magento.conf
@@ -26,7 +26,7 @@ sed -i "s,root /var/www/html,root ${MY_SHOP_PATH},g" /etc/nginx/sites-available/
 ln -s /etc/nginx/sites-available/magento.conf /etc/nginx/sites-enabled/magento.conf
 ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
-cd /etc/nginx/conf.d/
+mkdir -p /etc/nginx/conf_m1 cd /etc/nginx/conf_m1/
 for CONFIG in ${NGINX_EXTRA_CONF}
 do
 wget -q ${NGINX_EXTRA_CONF_URL}${CONFIG}
