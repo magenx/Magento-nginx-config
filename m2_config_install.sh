@@ -3,7 +3,7 @@
 #### IT WILL REMOVE ALL CONFIGURATION FILES THAT HAVE BEEN PREVIOUSLY INSTALLED.
 
 NGINX_EXTRA_CONF="assets.conf error_page.conf extra_protect.conf hhvm.conf maintenance.conf multishop.conf php_backend.conf phpmyadmin.conf setup.conf spider.conf status.conf"
-NGINX_EXTRA_CONF_URL="https://raw.githubusercontent.com/magenx/nginx-config/master/magento2/conf.d/"
+NGINX_EXTRA_CONF_URL="https://raw.githubusercontent.com/magenx/nginx-config/master/magento2/conf_m2/"
 
 echo "---> CREATING NGINX CONFIGURATION FILES NOW"
 echo
@@ -28,7 +28,7 @@ sed -i "s,user  nginx,user  ${MY_WEB_USER},g" /etc/nginx/nginx.conf
 ln -s /etc/nginx/sites-available/magento2.conf /etc/nginx/sites-enabled/magento2.conf
 ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
-mkdir /etc/nginx/conf_m2/ && cd /etc/nginx/conf_m2/
+mkdir -p /etc/nginx/conf_m2 && cd /etc/nginx/conf_m2/
 for CONFIG in ${NGINX_EXTRA_CONF}
 do
 wget -q ${NGINX_EXTRA_CONF_URL}${CONFIG}
