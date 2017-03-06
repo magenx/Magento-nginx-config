@@ -2,7 +2,7 @@
 #### Install nginx configuration
 #### IT WILL REMOVE ALL CONFIGURATION FILES THAT HAVE BEEN PREVIOUSLY INSTALLED.
 
-NGINX_EXTRA_CONF="error_page.conf extra_protect.conf export.conf hhvm.conf php_backend.conf maintenance.conf multishop.conf maps.conf phpmyadmin.conf spider.conf"
+NGINX_EXTRA_CONF="error_page.conf extra_protect.conf export.conf php_backend.conf maintenance.conf maps.conf phpmyadmin.conf"
 NGINX_EXTRA_CONF_URL="https://raw.githubusercontent.com/magenx/nginx-config/master/magento1/conf_m1/"
 
 echo "---> CREATING NGINX CONFIGURATION FILES NOW"
