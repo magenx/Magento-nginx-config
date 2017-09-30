@@ -4,6 +4,8 @@ NGINX_VERSION=$(curl -s http://nginx.org/en/download.html | grep -oP '(?<=gz">).
 NPS_VERSION=$(curl -s https://api.github.com/repos/pagespeed/ngx_pagespeed/tags 2>&1 | head -3 | grep -oP '(?<="v).*(?=")')
 NGINX_PAGESPEEDSO="/usr/lib64/nginx/modules/ngx_pagespeed.so"
 
+cp -rf /etc/nginx /etc/nginx.back
+
 cd /opt
 wget -O v${NPS_VERSION}.zip https://github.com/pagespeed/ngx_pagespeed/archive/v${NPS_VERSION}.zip
 unzip -o v${NPS_VERSION}.zip
