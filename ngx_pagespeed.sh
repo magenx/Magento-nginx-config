@@ -4,7 +4,7 @@ NGINX_VERSION=$(curl -s http://nginx.org/en/download.html | grep -oP '(?<=gz">).
 NPS_VERSION=$(curl -s https://api.github.com/repos/pagespeed/ngx_pagespeed/tags 2>&1 | head -3 | grep -oP '(?<="v).*(?=")')
 NGINX_PAGESPEEDSO="/usr/lib64/nginx/modules/ngx_pagespeed.so"
 
-cp -rf /etc/nginx /etc/nginx.back
+cp -rf /etc/nginx /etc/nginx_back_nps
 
 cd /opt
 wget -O v${NPS_VERSION}.zip https://github.com/pagespeed/ngx_pagespeed/archive/v${NPS_VERSION}.zip
@@ -80,3 +80,7 @@ make -s install
 cd /usr/lib64/nginx/modules
 mv ngx_pagespeed.so ngx_pagespeed_${NGINX_VERSION}.so 
 ln -s ngx_pagespeed_${NGINX_VERSION}.so ngx_pagespeed.so
+
+rm -rf /etc/nginx
+cp -rf /etc/nginx_back_nps /etc/nginx
+
