@@ -4,8 +4,6 @@ NGINX_VERSION=$(curl -s http://nginx.org/en/download.html | grep -oP '(?<=gz">).
 NPS_VERSION=$(curl -s https://api.github.com/repos/pagespeed/ngx_pagespeed/tags 2>&1 | head -3 | grep -oP '(?<="v).*(?=")')
 NGINX_PAGESPEEDSO="/usr/lib64/nginx/modules/ngx_pagespeed.so"
 
-cp -rf /etc/nginx /etc/nginx_back_nps
-
 cd /opt
 wget -O v${NPS_VERSION}.zip https://github.com/pagespeed/ngx_pagespeed/archive/v${NPS_VERSION}.zip
 unzip -o v${NPS_VERSION}.zip
@@ -67,6 +65,10 @@ cd ${NGINX_VERSION}/
 	--add-dynamic-module=/opt/ngx_pagespeed-${NPS_VERSION} \
 	--with-cc-opt='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=generic -fPIC' \
 	--with-ld-opt='-Wl,-z,relro -Wl,-z,now -pie'
+	
+if [ -d "/etc/nginx" ]; then  
+    cp -rf /etc/nginx /etc/nginx_back_nps  
+fi
 
 if [ -L ${NGINX_PAGESPEEDSO} ] ; then
    if [ -e ${NGINX_PAGESPEEDSO} ] ; then
@@ -81,6 +83,12 @@ cd /usr/lib64/nginx/modules
 mv ngx_pagespeed.so ngx_pagespeed_${NGINX_VERSION}.so 
 ln -s ngx_pagespeed_${NGINX_VERSION}.so ngx_pagespeed.so
 
-rm -rf /etc/nginx
-cp -rf /etc/nginx_back_nps /etc/nginx
+if [ -d "/etc/nginx_back_nps" ]; then  
+    rm -rf /etc/nginx
+    cp -rf /etc/nginx_back_nps /etc/nginx 
+fi
 
+if [ ! -L "/etc/nginx/modules" ] ; then
+   cd /etc/nginx
+   ln -s /usr/lib64/nginx/modules modules
+fi
