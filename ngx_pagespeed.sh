@@ -76,7 +76,7 @@ cd ${NGINX_VERSION}/
 	--with-ld-opt='-Wl,-z,relro -Wl,-z,now -pie'
 	
 if [ -d "/etc/nginx" ]; then  
-    cp -rf /etc/nginx /etc/nginx_back_nps  
+    cp -rf /etc/nginx /etc/nginx_config_back_nps  
 fi
 
 if [ -L ${NGINX_PAGESPEEDSO} ]; then
