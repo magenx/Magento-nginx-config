@@ -4,7 +4,7 @@ NGINX_VERSION=$(curl -s http://nginx.org/en/download.html | grep -oP '(?<=gz">).
 NPS_VERSION=$(curl -s https://api.github.com/repos/pagespeed/ngx_pagespeed/tags 2>&1 | head -3 | grep -oP '(?<="v).*(?=")')
 NGINX_PAGESPEEDSO="/usr/lib64/nginx/modules/ngx_pagespeed.so"
 
-cd /opt
+mkdir -p /opt/ngx_nps && cd $_
 wget -O v${NPS_VERSION}.zip https://github.com/pagespeed/ngx_pagespeed/archive/v${NPS_VERSION}.zip
 unzip -o v${NPS_VERSION}.zip
 cd ngx_pagespeed-${NPS_VERSION}/
@@ -17,7 +17,7 @@ psol_url=https://dl.google.com/dl/page-speed/psol/${NPS_RELEASE_NUMBER}.tar.gz
 wget ${psol_url}
 tar -xzf $(basename ${psol_url})
 
-cd /opt
+cd /opt/ngx_nps
 wget -O ${NGINX_VERSION}.tar.gz http://nginx.org/download/${NGINX_VERSION}.tar.gz
 tar -xzf ${NGINX_VERSION}.tar.gz
 cd ${NGINX_VERSION}/
