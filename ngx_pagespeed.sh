@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#====================#===============#
+# CENTOS 7 OPTIMIZED | MASC-M SERVER #
+#====================#===============#
+
 NGINX_VERSION=$(curl -s http://nginx.org/en/download.html | grep -oP '(?<=gz">).*?(?=</a>)' | head -1)
 NPS_VERSION=$(curl -s https://api.github.com/repos/pagespeed/ngx_pagespeed/tags 2>&1 | head -3 | grep -oP '(?<="v).*(?=")')
 NGINX_PAGESPEEDSO="/usr/lib64/nginx/modules/ngx_pagespeed.so"
