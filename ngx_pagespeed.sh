@@ -87,7 +87,6 @@ else
   echo "==============================================================="
   echo "Configure error"
 fi
-fi
 
 if [ $? -eq 0 ]; then
 make install
