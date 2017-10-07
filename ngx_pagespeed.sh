@@ -74,28 +74,33 @@ cd ${NGINX_VERSION}/
 	--add-dynamic-module=/opt/ngx_pagespeed_module/ngx_pagespeed-${NPS_VERSION} \
 	--with-cc-opt='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=generic -fPIC' \
 	--with-ld-opt='-Wl,-z,relro -Wl,-z,now -pie'
-	
+
+if [ $? -eq 0 ]; then
 if [ -d "/etc/nginx" ]; then  
     cp -rf /etc/nginx /etc/nginx_config_back_nps  
 fi
-
 if [ -L ${NGINX_PAGESPEEDSO} ]; then
      rm ${NGINX_PAGESPEEDSO%.*}*
 fi
+make
+fi
 
-make -s
-make -s install
-
+if [ $? -eq 0 ]; then
+make install
 cd /usr/lib64/nginx/modules
 mv ngx_pagespeed.so ngx_pagespeed_${NGINX_VERSION}.so 
 ln -s ngx_pagespeed_${NGINX_VERSION}.so ngx_pagespeed.so
-
+sed -i "/^distroverpkg.*/a exclude=nginx*" /etc/yum.conf
 if [ -d "/etc/nginx_config_back_nps" ]; then  
     rm -rf /etc/nginx
     cp -rf /etc/nginx_config_back_nps /etc/nginx 
 fi
-
 if [ ! -L "/etc/nginx/modules" ] ; then
    cd /etc/nginx
    ln -s /usr/lib64/nginx/modules modules
 fi
+else
+  echo "==============================================================="
+  echo "Compilation error"
+fi
+
