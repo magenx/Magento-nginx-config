@@ -83,6 +83,10 @@ if [ -L ${NGINX_PAGESPEEDSO} ]; then
      rm ${NGINX_PAGESPEEDSO%.*}*
 fi
 make
+else
+  echo "==============================================================="
+  echo "Configure error"
+fi
 fi
 
 if [ $? -eq 0 ]; then
@@ -101,6 +105,6 @@ if [ ! -L "/etc/nginx/modules" ] ; then
 fi
 else
   echo "==============================================================="
-  echo "Compilation error"
+  echo "Make error"
 fi
 
