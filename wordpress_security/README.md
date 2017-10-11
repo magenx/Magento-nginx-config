@@ -2,8 +2,7 @@
 protect wordpress installation
 <br/>
 
-Hide My WP - No one can know you use WordPress!<br/>
-http://codecanyon.net/item/hide-my-wp-no-one-can-know-you-use-wordpress/4177158
+[Hide My WP - No one can know you use WordPress!](https://codecanyon.net/item/hide-my-wp-amazing-security-plugin-for-wordpress/4177158?ref=kornolio)
 
 <br/>
 iThemes Security (formerly Better WP Security), #1 WordPress Security Plugin<br/>
