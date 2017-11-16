@@ -14,6 +14,8 @@ if [ ! -d "/opt/ngx_pagespeed_module" ]; then
     rm -rf /opt/ngx_pagespeed_module/
 fi
 
+yum remove nginx
+
 wget -O v${NPS_VERSION}.zip https://github.com/pagespeed/ngx_pagespeed/archive/v${NPS_VERSION}.zip
 unzip -o v${NPS_VERSION}.zip
 cd ngx_pagespeed-${NPS_VERSION}/
