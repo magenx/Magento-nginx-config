@@ -14,8 +14,6 @@ if [ ! -d "/opt/ngx_pagespeed_module" ]; then
     rm -rf /opt/ngx_pagespeed_module/
 fi
 
-yum remove nginx
-
 wget -O v${NPS_VERSION}.zip https://github.com/pagespeed/ngx_pagespeed/archive/v${NPS_VERSION}.zip
 unzip -o v${NPS_VERSION}.zip
 cd ngx_pagespeed-${NPS_VERSION}/
@@ -80,6 +78,7 @@ cd ${NGINX_VERSION}/
 if [ $? -eq 0 ]; then
 if [ -d "/etc/nginx" ]; then  
     cp -rf /etc/nginx /etc/nginx_config_back_nps  
+    yum remove nginx
 fi
 if [ -L ${NGINX_PAGESPEEDSO} ]; then
      rm ${NGINX_PAGESPEEDSO%.*}*
