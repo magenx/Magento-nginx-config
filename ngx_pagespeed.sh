@@ -78,7 +78,7 @@ cd ${NGINX_VERSION}/
 if [ $? -eq 0 ]; then
 if [ -d "/etc/nginx" ]; then  
     cp -rf /etc/nginx /etc/nginx_config_back_nps  
-    yum remove nginx
+    #yum remove nginx
 fi
 if [ -L ${NGINX_PAGESPEEDSO} ]; then
      rm ${NGINX_PAGESPEEDSO%.*}*
