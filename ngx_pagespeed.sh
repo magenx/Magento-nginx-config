@@ -5,7 +5,7 @@
 #====================#===============#
 
 NGINX_VERSION=$(curl -s http://nginx.org/en/download.html | grep -oP '(?<=gz">).*?(?=</a>)' | head -1)
-NPS_VERSION=$(curl -s https://api.github.com/repos/pagespeed/ngx_pagespeed/tags 2>&1 | head -3 | grep -oP '(?<="v).*(?=")')
+NPS_VERSION=$(curl -s https://api.github.com/repos/apache/incubator-pagespeed-ngx/tags 2>&1 | head -3 | grep -oP '(?<="v).*(?=")')
 NGINX_PAGESPEEDSO="/usr/lib64/nginx/modules/ngx_pagespeed.so"
 
 if [ ! -d "/opt/ngx_pagespeed_module" ]; then  
@@ -14,9 +14,9 @@ if [ ! -d "/opt/ngx_pagespeed_module" ]; then
     rm -rf /opt/ngx_pagespeed_module/
 fi
 
-wget -O v${NPS_VERSION}.zip https://github.com/pagespeed/ngx_pagespeed/archive/v${NPS_VERSION}.zip
+wget -O v${NPS_VERSION}.zip https://github.com/apache/incubator-pagespeed-ngx/archive/v${NPS_VERSION}.zip
 unzip -o v${NPS_VERSION}.zip
-cd ngx_pagespeed-${NPS_VERSION}/
+cd incubator-pagespeed-ngx-${NPS_VERSION}/
 
 NPS_RELEASE_NUMBER=${NPS_VERSION/beta/}
 NPS_RELEASE_NUMBER=${NPS_VERSION/stable/}
@@ -71,7 +71,7 @@ cd ${NGINX_VERSION}/
 	--with-stream_ssl_preread_module \
 	--with-http_perl_module \
 	--with-http_geoip_module \
-	--add-dynamic-module=/opt/ngx_pagespeed_module/ngx_pagespeed-${NPS_VERSION} \
+	--add-dynamic-module=/opt/ngx_pagespeed_module/incubator-pagespeed-ngx-${NPS_VERSION} \
 	--with-cc-opt='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=generic -fPIC' \
 	--with-ld-opt='-Wl,-z,relro -Wl,-z,now -pie'
 
