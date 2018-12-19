@@ -8,6 +8,8 @@ NGINX_VERSION=$(curl -s http://nginx.org/en/download.html | grep -oP '(?<=gz">).
 NPS_VERSION=$(curl -s https://api.github.com/repos/apache/incubator-pagespeed-ngx/tags 2>&1 | head -3 | grep -oP '(?<="v).*(?=")')
 NGINX_PAGESPEEDSO="/usr/lib64/nginx/modules/ngx_pagespeed.so"
 
+yum -y -q install gcc-c++ pcre-devel zlib-devel make unzip libuuid-devel
+
 rm -rf /opt/ngx_pagespeed_module/
 mkdir -p /opt/ngx_pagespeed_module && cd $_
 
