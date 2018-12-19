@@ -8,11 +8,8 @@ NGINX_VERSION=$(curl -s http://nginx.org/en/download.html | grep -oP '(?<=gz">).
 NPS_VERSION=$(curl -s https://api.github.com/repos/apache/incubator-pagespeed-ngx/tags 2>&1 | head -3 | grep -oP '(?<="v).*(?=")')
 NGINX_PAGESPEEDSO="/usr/lib64/nginx/modules/ngx_pagespeed.so"
 
-if [ ! -d "/opt/ngx_pagespeed_module" ]; then  
-    mkdir -p /opt/ngx_pagespeed_module && cd $_
-    else
-    rm -rf /opt/ngx_pagespeed_module/
-fi
+rm -rf /opt/ngx_pagespeed_module/
+mkdir -p /opt/ngx_pagespeed_module && cd $_
 
 wget -O v${NPS_VERSION}.zip https://github.com/apache/incubator-pagespeed-ngx/archive/v${NPS_VERSION}.zip
 unzip -o v${NPS_VERSION}.zip
