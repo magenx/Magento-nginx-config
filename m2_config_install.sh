@@ -2,7 +2,7 @@
 #### Install nginx configuration
 #### IT WILL REMOVE ALL CONFIGURATION FILES THAT HAVE BEEN PREVIOUSLY INSTALLED.
 
-NGINX_EXTRA_CONF="assets.conf error_page.conf extra_protect.conf maintenance.conf php_backend.conf maps.conf phpmyadmin.conf setup.conf pagespeed.conf status.conf"
+NGINX_EXTRA_CONF="assets.conf error_page.conf extra_protect.conf maintenance.conf php_backend.conf maps.conf phpmyadmin.conf sslproxy.conf setup.conf pagespeed.conf status.conf"
 NGINX_EXTRA_CONF_URL="https://raw.githubusercontent.com/magenx/nginx-config/master/magento2/conf_m2/"
 
 echo "---> CREATING NGINX CONFIGURATION FILES NOW"
@@ -22,6 +22,7 @@ wget -q https://raw.githubusercontent.com/magenx/nginx-config/master/magento2/si
 wget -q https://raw.githubusercontent.com/magenx/nginx-config/master/magento2/sites-available/magento2.conf
 
 sed -i "s/example.com/${MY_DOMAIN}/g" /etc/nginx/sites-available/magento2.conf
+sed -i "s/example.com/${MY_DOMAIN}/g" /etc/nginx/conf_m2/sslproxy.conf
 sed -i "s,/var/www/html,${MY_SHOP_PATH},g" /etc/nginx/sites-available/magento2.conf
 sed -i "s,user  nginx,user  ${MY_WEB_USER},g" /etc/nginx/nginx.conf
 
