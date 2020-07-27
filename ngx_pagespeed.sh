@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #====================#===============#
-# CENTOS 7 OPTIMIZED | MASC-M SERVER #
+# CENTOS 7 OPTIMIZED | MAGENX SERVER #
 #====================#===============#
 
 NGINX_VERSION=$(curl -s http://nginx.org/en/download.html | grep -oP '(?<=gz">).*?(?=</a>)' | head -1)
