@@ -94,7 +94,7 @@ make install
 cd /usr/lib64/nginx/modules
 mv ngx_pagespeed.so ngx_pagespeed_${NGINX_VERSION}.so 
 ln -s ngx_pagespeed_${NGINX_VERSION}.so ngx_pagespeed.so
-sed -i "/^distroverpkg.*/a exclude=nginx*" /etc/yum.conf
+
 if [ -d "/etc/nginx_config_back_nps" ]; then  
     rm -rf /etc/nginx
     cp -rf /etc/nginx_config_back_nps /etc/nginx 
