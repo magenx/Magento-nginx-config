@@ -18,7 +18,7 @@ mkdir -p /etc/nginx/sites-available && cd $_
 curl -s ${GITHUB_REPO_API_URL}/sites-available 2>&1 | awk -F'"' '/download_url/ {print $4 ; system("curl -sO "$4)}' >/dev/null
 
 sed -i "s/example.com/${MAGE_DOMAIN}/g" /etc/nginx/sites-available/magento2.conf
-sed -i "s,/var/www/html,${MAGE_WEB_ROOT_PATH},g" /etc/nginx/sites-available/magento2.conf
+sed -i "s,/var/www/html,${MAGE_WEB_ROOT_PATH},g" /etc/nginx/conf_m2/maps.conf
 sed -i "s,user  nginx,user  ${MAGE_OWNER},g" /etc/nginx/nginx.conf
 
 ln -s /etc/nginx/sites-available/magento2.conf /etc/nginx/sites-enabled/magento2.conf
