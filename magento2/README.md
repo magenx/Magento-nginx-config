@@ -1,31 +1,37 @@
 TESTING<br/>
 
-to enable configuration you have to run these commands:<br/>
-```cd /etc/nginx/sites-enabled/```<br/>
-```ln -s /etc/nginx/sites-avalable/default.conf ./default.conf```<br/>
-```ln -s /etc/nginx/sites-avalable/magento2.conf ./magento2.conf```<br/>
-```nginx -t```<br/>
-if no errors detected, then<br/>
+to enable configuration you have to run these commands:  
+```cd /etc/nginx/sites-enabled/```  
+```ln -s /etc/nginx/sites-available/default.conf ./default.conf```  
+```ln -s /etc/nginx/sites-available/magento2.conf ./magento2.conf```  
+```nginx -t```  
+if no errors detected, then  
 ```service nginx restart```
 
-<br/>
-for ssl configuration in nginx.conf you must: <br/>
-1 - open ```cd /etc/ssl/certs``` <br/>
-2 - generate dhparam file ```openssl dhparam -out dhparams.pem 2048``` <br/>
-3 - enable in nginx.conf ```ssl_dhparam /etc/ssl/certs/dhparams.pem;``` <br/>
+for local ssl configuration in nginx.conf you must:  
+1 - open ```cd /etc/ssl/certs```  
+2 - generate dhparam file ```openssl dhparam -out dhparams.pem 4096```  
+3 - enable in nginx.conf ```ssl_dhparam /etc/ssl/certs/dhparams.pem;```  
 
-```conf.d/assets.conf``` => settings for any static assets<br/>
-```conf.d/error_page.conf``` => configure custom error pages<br/>
-```conf.d/extra_protect.conf``` => protecting everything<br/>
-```conf.d/hhvm.conf``` => hhvm vs php-fpm port/route mapping<br/>
-```conf.d/maintenance.conf``` => global maintenance<br/>
-```conf.d/multishop.conf``` => settings for multistore code<br/>
-```conf.d/php_backend.conf``` => global settings for php execution<br/>
-```conf.d/setup.conf``` => magento web setup/update<br/>
-```conf.d/status.conf``` => nginx/php-fpm status locations<br/>
 
-```www/default.conf``` => catch non-existent server name<br/>
-```www/magento2.conf``` => magento virtual host/server configuration file<br/>
+```conf_m2/cors.conf``` => custom CORS headers  
+```conf_m2/error_page.conf``` => configure custom error pages  
+```conf_m2/extra_protect.conf``` => protecting everything  
+```conf_m2/maintenance.conf``` => global maintenance  
+```conf_m2/maps.conf``` => global nginx maps  
+```conf_m2/media.conf``` => settings for any media assets  
+```conf_m2/pagespeed.conf``` => settings for pagespeed plugin  
+```conf_m2/php_backend.conf``` => global settings for php execution  
+```conf_m2/phpmyadmin.conf``` => settings for phpMyAdmin  
+```conf_m2/sitemap.conf``` => settings for any SEO  
+```conf_m2/static.conf``` => settings for any static assets  
+```conf_m2/status.conf``` => nginx/php-fpm status locations  
+```conf_m2/varnish_proxy.conf``` => varnish cache proxy  
 
-```fastcgi_params``` => global fastcgi parameters<br/>
-```nginx.conf``` => main nginx configuration file<br/>
+
+```sites-available/default.conf``` => catch non-existent server name  
+```sites-available/magento2.conf``` => magento virtual host/server configuration file  
+
+
+```fastcgi_params``` => global fastcgi parameters  
+```nginx.conf``` => main nginx configuration file  
